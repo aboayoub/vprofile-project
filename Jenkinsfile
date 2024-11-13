@@ -16,6 +16,7 @@ pipeline{
         NEXUS_LOGIN = 'nexuslogin'
 
     }
+    
     stages {
         stage('build'){
             steps{
