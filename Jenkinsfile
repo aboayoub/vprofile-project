@@ -55,12 +55,10 @@ pipeline{
                     
                 }
                 withSonarQubeEnv("${SONARQUBE_SERVER"}) {
-                        // Run SonarQube analysis
-                        sh '''
-                        mvn sonar:sonar\
-                            -Dsonar.token=${PROJECT_KEY}\
-                            -Dsonar.projectName=My Project vprofile \
+                            sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+                            -Dsonar.projectName=vprofile-repo \
                             -Dsonar.projectVersion=1.0 \
+                            -Dsonar.sources=src/ \
                             -Dsonar.sources=src/ \
                             -Dsonar.tests=src/test/java/com/visualpathit/account/\
                             -Dsonar.language=java \
@@ -68,7 +66,8 @@ pipeline{
                             -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
                             -Dsonar.junit.reportsPath=target/surefire-reports/ \
                             -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-                            -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+                            -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
+                            '''
                                     
                     }
             }
