@@ -54,13 +54,13 @@ pipeline{
                     scannerHome = tool "${SONARSCANNER}"
                     
                 }
-                withSonarQubeEnv("${SONARQUBE_SERVER"}) {
+                withSonarQubeEnv("${SONARQUBE_SERVER}") {
                             sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                             -Dsonar.projectName=vprofile-repo \
                             -Dsonar.projectVersion=1.0 \
                             -Dsonar.sources=src/ \
                             -Dsonar.sources=src/ \
-                            -Dsonar.tests=src/test/java/com/visualpathit/account/\
+                            -Dsonar.tests=src/test/java/com/visualpathit/account/ \
                             -Dsonar.language=java \
                             -Dsonar.exclusions=**/generated/** \
                             -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
